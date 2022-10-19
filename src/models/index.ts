@@ -1,6 +1,15 @@
 import { createRealmContext } from '@realm/react';
-import { Habit, HabitInstance } from './Habit';
+
+import { Tracker, TrackerInstance } from './Tracker';
+
+export { Tracker, TrackerInstance };
 
 export const RealmContext = createRealmContext({
-  schema: [Habit, HabitInstance],
+  schema: [Tracker, TrackerInstance],
 });
+
+export const {
+  useRealm,
+  useQuery: useRealmQuery,
+  useObject: useRealmObject,
+} = RealmContext;

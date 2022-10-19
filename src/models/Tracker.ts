@@ -1,11 +1,11 @@
 import { Realm } from '@realm/react';
 
-export class Habit extends Realm.Object {
+export class Tracker extends Realm.Object {
   _id!: Realm.BSON.ObjectId;
   name!: string;
-  status!: THabitStatus;
+  status!: TTrackerStatus;
   createdAt!: Date;
-  habitInstances!: HabitInstance[];
+  trackerInstances!: TrackerInstance[];
 
   static generate(name: string) {
     return {
@@ -13,25 +13,25 @@ export class Habit extends Realm.Object {
       name,
       status: 'active',
       createdAt: new Date(),
-      habitInstances: [],
+      trackerInstances: [] as TrackerInstance[],
     };
   }
 
   // To use a class as a Realm object type, define the object schema on the static property "schema".
   static schema = {
-    name: 'Habit',
+    name: 'Tracker',
     primaryKey: '_id',
     properties: {
       _id: 'objectId',
       name: 'string',
       status: 'string',
       createdAt: 'date',
-      habitInstances: 'HabitInstance[]',
+      trackerInstances: 'TrackerInstance[]',
     },
   };
 }
 
-export class HabitInstance extends Realm.Object {
+export class TrackerInstance extends Realm.Object {
   _id!: Realm.BSON.ObjectId;
   dateTime!: Date;
 
@@ -44,7 +44,7 @@ export class HabitInstance extends Realm.Object {
 
   // To use a class as a Realm object type, define the object schema on the static property "schema".
   static schema = {
-    name: 'HabitInstance',
+    name: 'TrackerInstance',
     primaryKey: '_id',
     properties: {
       _id: 'objectId',
@@ -53,4 +53,4 @@ export class HabitInstance extends Realm.Object {
   };
 }
 
-type THabitStatus = 'active' | 'archived' | 'deleted';
+type TTrackerStatus = 'active' | 'archived' | 'deleted';
