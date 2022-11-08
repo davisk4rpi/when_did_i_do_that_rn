@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-const PADDING_VERTICAL_BASE = 18;
+import { ThemeSpacing } from '../../app-context';
 
 export const KeyboardAvoidingScreen = (props: Omit<ViewProps, 'style'>) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
@@ -30,7 +30,7 @@ export const KeyboardAvoidingScreen = (props: Omit<ViewProps, 'style'>) => {
 
   const style = useMemo(() => {
     return StyleSheet.compose<ViewStyle>(styles.screen, {
-      paddingBottom: PADDING_VERTICAL_BASE + keyboardHeight,
+      paddingBottom: ThemeSpacing.verticalScreen + keyboardHeight,
     });
   }, [keyboardHeight]);
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
-    paddingVertical: PADDING_VERTICAL_BASE,
-    paddingHorizontal: 12,
+    paddingVertical: ThemeSpacing.verticalScreen,
+    paddingHorizontal: ThemeSpacing.verticalScreen,
   },
 });

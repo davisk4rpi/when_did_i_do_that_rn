@@ -5,7 +5,8 @@ export class Tracker extends Realm.Object {
   name!: string;
   status!: TTrackerStatus;
   createdAt!: Date;
-  trackerInstances!: TrackerInstance[];
+  trackerInstances!: Realm.List<TrackerInstance>;
+  mostRecentTrackerInstance?: TrackerInstance;
 
   static generate(name: string) {
     return {
@@ -14,6 +15,7 @@ export class Tracker extends Realm.Object {
       status: 'active',
       createdAt: new Date(),
       trackerInstances: [] as TrackerInstance[],
+      mostRecentTrackerInstance: undefined,
     };
   }
 
@@ -27,6 +29,7 @@ export class Tracker extends Realm.Object {
       status: 'string',
       createdAt: 'date',
       trackerInstances: 'TrackerInstance[]',
+      mostRecentTrackerInstance: 'TrackerInstance?',
     },
   };
 }

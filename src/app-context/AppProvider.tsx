@@ -4,7 +4,7 @@ import { Provider as PaperProvider } from 'react-native-paper';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { RealmContext } from '../models';
+import { RealmContext } from '../data-access';
 import { PreferencesContext } from './PreferencesContext';
 import { DarkTheme, LightTheme } from './theme';
 

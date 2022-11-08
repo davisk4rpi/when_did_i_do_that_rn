@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
+import { ThemeSpacing } from '../../app-context';
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
-    paddingVertical: 18,
-    paddingHorizontal: 12,
+    marginVertical: ThemeSpacing.verticalScreen,
+    marginHorizontal: ThemeSpacing.horizontalScreen,
   },
 });
 

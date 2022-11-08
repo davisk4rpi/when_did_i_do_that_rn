@@ -6,6 +6,7 @@ export { Tracker, TrackerInstance };
 
 export const RealmContext = createRealmContext({
   schema: [Tracker, TrackerInstance],
+  schemaVersion: 2,
 });
 
 export const {

@@ -1,13 +1,22 @@
 import React, { useCallback } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewProps } from 'react-native';
 import { FAB } from 'react-native-paper';
 
 import { useNavigation } from '@react-navigation/native';
 
-export const NewTrackerFAB = () => {
+export const NewTrackerFAB = ({ onLayout }: Pick<ViewProps, 'onLayout'>) => {
   const { navigate } = useNavigation();
-  const handlePress = useCallback(() => navigate('NewTracker'), [navigate]);
-  return <FAB icon="plus" style={styles.fab} onPress={handlePress} />;
+  const handlePress = useCallback(() => {
+    navigate('NewTracker');
+  }, [navigate]);
+  return (
+    <FAB
+      onLayout={onLayout}
+      icon="plus"
+      style={styles.fab}
+      onPress={handlePress}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
