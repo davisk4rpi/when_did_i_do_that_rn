@@ -1,17 +1,34 @@
-import React from 'react';
-import { StyleSheet, View, ViewProps } from 'react-native';
+import React, { useMemo } from 'react';
+import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ThemeSpacing } from '../../app-context';
+import { useHeaderHeight } from '@react-navigation/elements';
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    marginVertical: ThemeSpacing.verticalScreen,
-    marginHorizontal: ThemeSpacing.horizontalScreen,
-  },
-});
+import { AppStyles, ThemeSpacing } from '../../app-context';
 
-export const Screen = (props: ViewProps) => {
-  return <View {...props} style={styles.screen} />;
+export const DEFAULT_SCREEN_STYLE: ViewStyle = {
+  flex: 1,
+  paddingBottom: ThemeSpacing.verticalScreen,
+  paddingHorizontal: ThemeSpacing.horizontalScreen,
+};
+
+export const Screen = ({ style, testID, ...props }: ViewProps) => {
+  const headerHeight = useHeaderHeight();
+
+  const internalStyle = useMemo(() => {
+    return StyleSheet.compose({ marginTop: headerHeight }, style);
+  }, [headerHeight, style]);
+
+  return (
+    <SafeAreaView
+      style={AppStyles.flex1}
+      mode="padding"
+      edges={['bottom', 'left', 'right']}>
+      <View
+        testID={testID}
+        style={[DEFAULT_SCREEN_STYLE, internalStyle]}
+        {...props}
+      />
+    </SafeAreaView>
+  );
 };
