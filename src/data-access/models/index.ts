@@ -1,12 +1,12 @@
 import { createRealmContext } from '@realm/react';
 
-import { Tracker, TrackerInstance } from './Tracker';
+import { Tracker, TrackerLog } from './Tracker';
 
-export { Tracker, TrackerInstance };
+export { Tracker, TrackerLog };
 
 export const RealmContext = createRealmContext({
-  schema: [Tracker, TrackerInstance],
-  schemaVersion: 2,
+  schema: [Tracker, TrackerLog],
+  schemaVersion: 1,
 });
 
 export const {
