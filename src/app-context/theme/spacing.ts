@@ -6,6 +6,6 @@ export const ThemeSpacing = {
     return isTablet() ? this.base * 3 : this.base * 2;
   },
   get verticalScreen() {
-    return this.base * 3;
+    return this.base * 2;
   },
 } as const;
